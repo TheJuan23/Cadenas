@@ -7,81 +7,144 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background: linear-gradient(120deg, #ffccf9, #cceeff, #f0f5a9);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
             color: #333;
         }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        header {
+            background-color: #b3afaf;
+            color: rgb(15, 8, 8);
+            padding: 20px;
+            text-align: center;
+        }
+
+
         h1, h2 {
             text-align: center;
-            color: #0073e6;
+            color: #4a47a3;
         }
+
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 20px auto;
             padding: 20px;
             background: white;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
         }
-        .method {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background: #fafafa;
+
+        .menu, .method {
+            display: none;
         }
-        label {
+
+        .menu.active, .method.active {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
         }
-        input, button {
-            padding: 10px;
+
+        button {
+            padding: 8px 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #4a47a3;
+            color: white;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            font-size: 0.9rem;
+        }
+
+        button:hover {
+            background-color: #38358a;
+        }
+
+        input {
+            padding: 8px;
             margin-bottom: 10px;
-            width: 100%;
+            width: calc(100% - 20px);
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        button {
-            background-color: #0073e6;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #005bb5;
-        }
+
         .result {
             margin-top: 10px;
             font-weight: bold;
         }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu li {
+            margin: 10px 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #4a47a3;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .menu a:hover {
+            color: #38358a;
+        }
     </style>
 </head>
 <body>
-    <h1>Trabajo Parcial: Métodos de Cadenas en JavaScript</h1>
+    <header>
+        <h1>Proyecto Final de JavaScript</h1>
+        <p>Practicando métodos de cadenas</p>
+        <p>Presentado por:</p>
+        <p> Juan Pablo Carmona Cabrera</p>
+      </header>
     <div class="container">
-        <!-- length -->
-        <div class="method">
-            <h2>Ejemplo 1: length</h2>
+        <!-- Menú Principal -->
+        <div class="menu active" id="menuPrincipal">
+            <h2>Menú Principal</h2>
+            <ul>
+                <li><a onclick="mostrarEjercicio('length')">1. Longitud de una cadena</a></li>
+                <li><a onclick="mostrarEjercicio('charAt')">2. Caracter en una posición</a></li>
+                <li><a onclick="mostrarEjercicio('slice')">3. Subcadena (slice)</a></li>
+                <li><a onclick="mostrarEjercicio('toUpperCase')">4. Mayúsculas</a></li>
+                <li><a onclick="mostrarEjercicio('split')">5. Dividir Cadena</a></li>
+            </ul>
+        </div>
+
+        <!-- Ejercicio 1: length -->
+        <div class="method" id="length">
+            <h2>1. Longitud de una cadena</h2>
             <label for="inputLength">Introduce una cadena:</label>
             <input type="text" id="inputLength" placeholder="Escribe algo aquí...">
             <button onclick="calcularLongitud()">Calcular Longitud</button>
             <div class="result" id="resultLength"></div>
+            <button onclick="volverAlMenu()">Volver al Menú</button>
         </div>
 
-        <!-- charAt -->
-        <div class="method">
-            <h2>Ejemplo 2: charAt()</h2>
+        <!-- Ejercicio 2: charAt -->
+        <div class="method" id="charAt">
+            <h2>2. Caracter en una posición</h2>
             <label for="inputChar">Introduce una cadena:</label>
             <input type="text" id="inputChar" placeholder="Escribe algo aquí...">
             <label for="indexChar">Índice:</label>
             <input type="number" id="indexChar" placeholder="Posición (0, 1, 2...)">
             <button onclick="obtenerCharAt()">Obtener Carácter</button>
             <div class="result" id="resultChar"></div>
+            <button onclick="volverAlMenu()">Volver al Menú</button>
         </div>
 
-        <!-- slice -->
-        <div class="method">
-            <h2>Ejemplo 3: slice()</h2>
+        <!-- Ejercicio 3: slice -->
+        <div class="method" id="slice">
+            <h2>3. Subcadena (slice)</h2>
             <label for="inputSlice">Introduce una cadena:</label>
             <input type="text" id="inputSlice" placeholder="Escribe algo aquí...">
             <label for="startSlice">Inicio:</label>
@@ -90,26 +153,29 @@
             <input type="number" id="endSlice" placeholder="Índice final">
             <button onclick="extraerSlice()">Extraer Subcadena</button>
             <div class="result" id="resultSlice"></div>
+            <button onclick="volverAlMenu()">Volver al Menú</button>
         </div>
 
-        <!-- toUpperCase -->
-        <div class="method">
-            <h2>Ejemplo 4: toUpperCase()</h2>
+        <!-- Ejercicio 4: toUpperCase -->
+        <div class="method" id="toUpperCase">
+            <h2>4. Mayúsculas</h2>
             <label for="inputUpper">Introduce una cadena:</label>
             <input type="text" id="inputUpper" placeholder="Escribe algo aquí...">
             <button onclick="convertirMayusculas()">Convertir a Mayúsculas</button>
             <div class="result" id="resultUpper"></div>
+            <button onclick="volverAlMenu()">Volver al Menú</button>
         </div>
 
-        <!-- split -->
-        <div class="method">
-            <h2>Ejemplo 5: split()</h2>
+        <!-- Ejercicio 5: split -->
+        <div class="method" id="split">
+            <h2>5. Dividir Cadena</h2>
             <label for="inputSplit">Introduce una cadena:</label>
             <input type="text" id="inputSplit" placeholder="Escribe algo aquí...">
             <label for="separatorSplit">Separador:</label>
             <input type="text" id="separatorSplit" placeholder="Ejemplo: espacio, coma, etc.">
             <button onclick="dividirCadena()">Dividir Cadena</button>
             <div class="result" id="resultSplit"></div>
+            <button onclick="volverAlMenu()">Volver al Menú</button>
         </div>
     </div>
     <script src="resources/script.js"></script>

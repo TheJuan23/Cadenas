@@ -1,11 +1,21 @@
-// Ejemplo 1: length
+// Navegación del Menú
+function mostrarEjercicio(ejercicioId) {
+    document.querySelectorAll('.menu, .method').forEach(section => section.classList.remove('active'));
+    document.getElementById(ejercicioId).classList.add('active');
+}
+
+function volverAlMenu() {
+    document.querySelectorAll('.menu, .method').forEach(section => section.classList.remove('active'));
+    document.getElementById('menuPrincipal').classList.add('active');
+}
+
+// Métodos de cadenas
 function calcularLongitud() {
     const input = document.getElementById("inputLength").value;
     const resultado = `La longitud de la cadena es: ${input.length}`;
     document.getElementById("resultLength").textContent = resultado;
 }
 
-// Ejemplo 2: charAt()
 function obtenerCharAt() {
     const input = document.getElementById("inputChar").value;
     const index = parseInt(document.getElementById("indexChar").value, 10);
@@ -15,7 +25,6 @@ function obtenerCharAt() {
     document.getElementById("resultChar").textContent = resultado;
 }
 
-// Ejemplo 3: slice()
 function extraerSlice() {
     const input = document.getElementById("inputSlice").value;
     const start = parseInt(document.getElementById("startSlice").value, 10);
@@ -24,14 +33,12 @@ function extraerSlice() {
     document.getElementById("resultSlice").textContent = `Subcadena extraída: '${resultado}'`;
 }
 
-// Ejemplo 4: toUpperCase()
 function convertirMayusculas() {
     const input = document.getElementById("inputUpper").value;
     const resultado = input.toUpperCase();
     document.getElementById("resultUpper").textContent = `En mayúsculas: '${resultado}'`;
 }
 
-// Ejemplo 5: split()
 function dividirCadena() {
     const input = document.getElementById("inputSplit").value;
     const separator = document.getElementById("separatorSplit").value;
