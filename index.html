@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabajo Parcial: Métodos de Cadenas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #0073e6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .method {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #fafafa;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, button {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #0073e6;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trabajo Parcial: Métodos de Cadenas en JavaScript</h1>
+    <div class="container">
+        <!-- length -->
+        <div class="method">
+            <h2>Ejemplo 1: length</h2>
+            <label for="inputLength">Introduce una cadena:</label>
+            <input type="text" id="inputLength" placeholder="Escribe algo aquí...">
+            <button onclick="calcularLongitud()">Calcular Longitud</button>
+            <div class="result" id="resultLength"></div>
+        </div>
+
+        <!-- charAt -->
+        <div class="method">
+            <h2>Ejemplo 2: charAt()</h2>
+            <label for="inputChar">Introduce una cadena:</label>
+            <input type="text" id="inputChar" placeholder="Escribe algo aquí...">
+            <label for="indexChar">Índice:</label>
+            <input type="number" id="indexChar" placeholder="Posición (0, 1, 2...)">
+            <button onclick="obtenerCharAt()">Obtener Carácter</button>
+            <div class="result" id="resultChar"></div>
+        </div>
+
+        <!-- slice -->
+        <div class="method">
+            <h2>Ejemplo 3: slice()</h2>
+            <label for="inputSlice">Introduce una cadena:</label>
+            <input type="text" id="inputSlice" placeholder="Escribe algo aquí...">
+            <label for="startSlice">Inicio:</label>
+            <input type="number" id="startSlice" placeholder="Índice inicial">
+            <label for="endSlice">Fin:</label>
+            <input type="number" id="endSlice" placeholder="Índice final">
+            <button onclick="extraerSlice()">Extraer Subcadena</button>
+            <div class="result" id="resultSlice"></div>
+        </div>
+
+        <!-- toUpperCase -->
+        <div class="method">
+            <h2>Ejemplo 4: toUpperCase()</h2>
+            <label for="inputUpper">Introduce una cadena:</label>
+            <input type="text" id="inputUpper" placeholder="Escribe algo aquí...">
+            <button onclick="convertirMayusculas()">Convertir a Mayúsculas</button>
+            <div class="result" id="resultUpper"></div>
+        </div>
+
+        <!-- split -->
+        <div class="method">
+            <h2>Ejemplo 5: split()</h2>
+            <label for="inputSplit">Introduce una cadena:</label>
+            <input type="text" id="inputSplit" placeholder="Escribe algo aquí...">
+            <label for="separatorSplit">Separador:</label>
+            <input type="text" id="separatorSplit" placeholder="Ejemplo: espacio, coma, etc.">
+            <button onclick="dividirCadena()">Dividir Cadena</button>
+            <div class="result" id="resultSplit"></div>
+        </div>
+    </div>
+    <script src="resources/script.js"></script>
+</body>
+</html>
